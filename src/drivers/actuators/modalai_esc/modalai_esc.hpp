@@ -34,7 +34,6 @@
 #pragma once
 
 #include <drivers/device/device.h>
-#include <drivers/drv_mixer.h>
 #include <lib/cdev/CDev.hpp>
 #include <lib/led/led.h>
 #include <lib/mixer_module/mixer_module.hpp>
@@ -76,11 +75,6 @@ public:
 	/** @see OutputModuleInterface */
 	bool updateOutputs(bool stop_motors, uint16_t outputs[MAX_ACTUATORS],
 			   unsigned num_outputs, unsigned num_control_groups_updated) override;
-
-	/** @see OutputModuleInterface */
-	void mixerChanged() override;
-
-	virtual int	ioctl(file *filp, int cmd, unsigned long arg);
 
 	virtual int	init();
 

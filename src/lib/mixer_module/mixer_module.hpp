@@ -87,9 +87,6 @@ public:
 	 */
 	virtual bool updateOutputs(bool stop_motors, uint16_t outputs[MAX_ACTUATORS],
 				   unsigned num_outputs, unsigned num_control_groups_updated) = 0;
-
-	/** called whenever the mixer gets updated/reset */
-	virtual void mixerChanged() {}
 };
 
 /**
@@ -163,17 +160,6 @@ public:
 	void unregister();
 
 	void setMaxTopicUpdateRate(unsigned max_topic_update_interval_us);
-
-	/**
-	 * Reset (unload) the complete mixer.
-	 */
-	void resetMixer();
-
-	/**
-	 * Load (append) a new mixer from a buffer.
-	 * @return 0 on success, <0 error otherwise
-	 */
-	int loadMixer(const char *buf, unsigned len);
 
 	const actuator_armed_s &armed() const { return _armed; }
 

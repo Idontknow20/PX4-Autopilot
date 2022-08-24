@@ -99,11 +99,6 @@ public:
 		return true;
 	}
 
-	void mixerChanged() override
-	{
-		mixer_changed = true;
-	}
-
 	void configureFunctions(const std::array<int32_t, max_num_outputs> &functions)
 	{
 		for (int i = 0; i < max_num_outputs; ++i) {
