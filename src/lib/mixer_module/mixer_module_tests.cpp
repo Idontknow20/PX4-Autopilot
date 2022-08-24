@@ -163,14 +163,12 @@ public:
 		memset(outputs, 0, sizeof(outputs));
 		num_outputs = 0;
 		num_updates = 0;
-		mixer_changed = false;
 	}
 
 	uint16_t outputs[MAX_ACTUATORS] {};
 	int num_outputs{0};
 	int num_updates{0};
 	bool was_scheduled{false};
-	bool mixer_changed{false};
 
 private:
 	uORB::Publication<actuator_test_s> _actuator_test_pub{ORB_ID(actuator_test)};
@@ -200,7 +198,6 @@ TEST_F(MixerModuleTest, basic)
 	// configure motor, ensure all still disarmed
 	test_module.configureFunctions({(int)OutputFunction::Motor1});
 	mixing_output.updateSubscriptions(false);
-	EXPECT_TRUE(test_module.mixer_changed);
 	EXPECT_EQ(test_module.num_updates, update(mixing_output));
 	EXPECT_EQ(test_module.num_outputs, max_num_outputs);
 
